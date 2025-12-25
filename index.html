@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CSE 194 – Cybersecurity History and Culture</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="CSE 194: Cybersecurity History and Culture course website. Currently under construction."
+  />
+  <style>
+    :root {
+      --bg-page: #ffffff;    
+      --bg-header: #c0c0c0;      
+      --bg-footer: #e0e0e0;
+      --text-main: #000000;
+      --text-muted: #333333;
+      --accent-green: #008000;
+      --border: #808080;
+      --link: #0000ee;
+      --link-visited: #551a8b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .site-header {
+      background-color: var(--bg-header);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .site-title {
+      font-family: "Courier New", Courier, monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    nav {
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    nav a {
+      color: var(--link);
+      text-decoration: underline;
+      margin-left: 6px;
+      margin-right: 6px;
+    }
+
+    nav a:visited {
+      color: var(--link-visited);
+    }
+
+    nav a.active {
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 20px 10px 24px;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+
+    .hero {
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .file-label {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .accent {
+      color: var(--accent-green);
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .hero-note {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      color: var(--text-main);
+      border-left: 3px solid var(--accent-green);
+      padding-left: 8px;
+      margin: 12px 0 18px;
+    }
+
+    .hero-actions {
+      margin-bottom: 18px;
+    }
+
+    .button-link {
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      background-color: #f0f0f0;
+      font-size: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      margin-right: 6px;
+    }
+
+    .button-link:hover {
+      background-color: #ffffff;
+    }
+
+    .button-disabled {
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      background-color: #f8f8f8;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .meta-grid {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dotted var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 12px;
+    }
+
+    .meta-item-label {
+      text-transform: uppercase;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    footer {
+      background-color: var(--bg-footer);
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      padding: 6px 10px 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    footer .footer-top {
+      margin-bottom: 4px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 12px 0;
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        max-width: 100%;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      main {
+        border-left: none;
+        border-right: none;
+      }
+
+      footer {
+        border-left: none;
+        border-right: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="site-title">cse194 course website</div>
+        <nav aria-label="Primary navigation">
+          <a href="#" class="active">Home</a> |
+          <!--
+            TODO update syllabus with the new office details
+          -->
+          <a href="assets/syllabus.pdf">Syllabus</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">CSE 194 · Spring 2025 · Arizona State University</div>
+        <div class="file-label">index.html // version 0.1-beta</div>
+
+        <h1>
+          CSE 194 Course Website –
+          <span class="accent">Under Construction</span>
+        </h1>
+
+        <div class="subtitle">
+          Temporary landing page for <strong>CSE 194: Cybersecurity History and Culture</strong>.
+        </div>
+
+        <p style="font-size: 13px; line-height: 1.4; max-width: 620px;">
+          The full course site (modules, readings, assignments, and announcements) is not online yet.
+          While this page is under construction, you can still view the official course syllabus.
+        </p>
+
+        <div class="hero-note">
+          hint: use the "Syllabus" link in the navigation bar or the button below to open the course syllabus
+          while the rest of the site is being built.
+        </div>
+
+        <div class="hero-actions">
+          <a href="syllabus.pdf" class="button-link">Open syllabus</a>
+        </div>
+
+        <div class="meta-grid" aria-label="Course details">
+          <div>
+            <div class="meta-item-label">Instructor</div>
+            <div>Pratham Gupta</div>
+          </div>
+          <div>
+            <div class="meta-item-label">Meeting Time</div>
+            <div>Wednesdays · 3:00–6:00 PM</div>
+          </div>
+          <div>
+            <div class="meta-item-label">Location</div>
+            <div>BYENG 361</div>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <section>
+        <p style="font-size: 12px; color: var(--text-muted);">
+          Note: This page is a placeholder for the CSE 194 course website. Once development is complete,
+          this URL will host links to readings, historical case studies, and other material related to
+          cybersecurity history and culture.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-top">
+        © 2025 CSE 194 – Cybersecurity History and Culture
+      </div>
+      <div>
+        status=UNDER_CONSTRUCTION | file=index.html
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
+

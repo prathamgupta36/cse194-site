@@ -71,8 +71,9 @@
       white-space: nowrap;
     }
 
-    nav a {
-      color: var(--link);
+    nav a,
+    nav a:visited {
+      color: var(--link); /* blue */
       margin-left: 6px;
       margin-right: 6px;
       text-decoration: none;
@@ -82,13 +83,10 @@
       text-decoration: underline;
     }
 
-    nav a:visited {
-      color: var(--link-visited);
-    }
-
     nav a.active {
       font-weight: bold;
       text-decoration: none;
+      color: var(--link-visited); /* yellow for current page */
     }
 
     main {
@@ -290,14 +288,18 @@
     <header class="site-header">
       <div class="header-inner">
         <div class="site-title">cse194 course website</div>
-        <nav aria-label="Primary navigation">
-          <a href="index.html">Home</a> |
-          <!--
-            TODO update syllabus with the new office details
-          -->
-          <a href="assets/syllabus.pdf">Syllabus</a> |
-          <a href="#" class="active">Modules</a>
-        </nav>
+          <nav aria-label="Primary navigation">
+            <a href="index.html">Home</a> |
+            <a
+              href="https://docs.google.com/document/d/18Cp6GryysWdbio7tAbaY5gUJH0PKi9CWTm712038SrQ/edit"
+              target="_blank"
+              rel="noopener"
+            >
+              Syllabus
+            </a> |
+            <a href="#" class="active">Modules</a> |
+            <a href="announcements.html">Announcements</a>
+          </nav>
       </div>
     </header>
 
@@ -415,7 +417,7 @@
 
           <div class="module-body">
             Early hacker culture: BBSes, IRC, Usenet, Kevin Mitnick, Tsutomu Shimomura,
-            Loyd Blankenship and &ldquo;The Hacker&rsquo;s Manifesto&rdquo;, and early policy moments.
+            Loyd Blankenship and &ldquo;The Hacker's Manifesto, and early policy moments.
             <div class="module-due">
               Assignment due: <strong>Sunday, February 22, 2026</strong>
             </div>
@@ -446,7 +448,7 @@
               Assignment due: <strong>Sunday, March 8, 2026</strong>
             </div>
             <div class="note">
-              Planned materials include reporting on the Morris worm, Kaminsky&rsquo;s DNS work,
+              Planned materials include reporting on the Morris worm, Kaminsky's DNS work,
               coverage of Aaron Swartz, and interviews/writings from Phineas Fisher.
             </div>
           </div>
@@ -560,7 +562,7 @@
 
     <footer>
       <div class="footer-top">
-        © 2025 CSE 194 – Cybersecurity History and Culture
+        © 2026 CSE 194 – Cybersecurity History and Culture
       </div>
       <div>
         status=active | file=modules.html

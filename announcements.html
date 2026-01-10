@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CSE 194 – Announcements</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Announcements for CSE 194: Cybersecurity History and Culture."
+  />
+  <style>
+    :root {
+      --bg-page: #000000;    
+      --bg-header: #202020;      
+      --bg-footer: #181818;
+      --text-main: #ffffff;
+      --text-muted: #cccccc;
+      --accent-green: #008000;
+      --border: #808080;
+      --link: #00d2ee;
+      --link-visited: #f6ea3f;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+    }
+
+    .page {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 16px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-header {
+      background-color: var(--bg-header);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .site-title {
+      font-family: "Courier New", Courier, monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    nav {
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    nav a,
+    nav a:visited {
+      color: var(--link);
+      margin-left: 6px;
+      margin-right: 6px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    nav a.active {
+      font-weight: bold;
+      text-decoration: none;
+      color: var(--link-visited);
+    }
+
+    main {
+      padding: 24px 16px 28px;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      flex: 1;
+    }
+
+    .eyebrow {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .file-label {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .accent {
+      color: greenyellow;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .announcements-intro {
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin-bottom: 18px;
+    }
+
+    .announcement-list {
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .announcement-card {
+      border: 1px solid var(--border);
+      background-color: #101010;
+      padding: 12px 12px 14px;
+      margin-bottom: 12px;
+    }
+
+    .announcement-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .announcement-title {
+      font-size: 15px;
+    }
+
+    .announcement-meta {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .announcement-body p {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .announcement-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 16px 0;
+    }
+
+    footer {
+      background-color: var(--bg-footer);
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      padding: 6px 10px 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    footer .footer-top {
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        max-width: 100%;
+        padding: 0 8px;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      main {
+        border-left: none;
+        border-right: none;
+      }
+
+      footer {
+        border-left: none;
+        border-right: none;
+      }
+
+      .announcement-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="site-title">cse194 course website</div>
+        <nav aria-label="Primary navigation">
+          <a href="index.html">Home</a> |
+          <a
+            href="https://docs.google.com/document/d/18Cp6GryysWdbio7tAbaY5gUJH0PKi9CWTm712038SrQ/edit"
+            target="_blank"
+            rel="noopener"
+          >
+            Syllabus
+          </a> |
+          <a href="modules.html">Modules</a> |
+          <a href="#" class="active">Announcements</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="eyebrow">CSE 194 · Cybersecurity History and Culture</div>
+      <div class="file-label">announcements.html // version 0.1</div>
+
+      <h1>
+        Announcements – <span class="accent">Hello Hackers</span>
+      </h1>
+
+      <p class="subtitle">
+        Course-wide updates, welcomes, and reminders will appear here throughout the term.
+      </p>
+
+      <p class="announcements-intro">
+        Check this page regularly for new announcements about schedule tweaks, module releases,
+        and other course logistics. Important items will usually be echoed in class,
+        but this page gives you a quick, public-facing timeline.
+      </p>
+
+      <hr />
+
+      <section class="announcement-list" aria-label="Course announcements">
+
+        <!-- Announcement 1: Welcome -->
+        <article class="announcement-card">
+          <header class="announcement-header">
+            <h2 class="announcement-title">
+              Welcome to CSE 194: Cybersecurity History and Culture
+            </h2>
+            <div class="announcement-meta">
+              <!-- You can fill in an actual date if you like -->
+              ANNOUNCEMENT · WELCOME · 14th January 2026
+            </div>
+          </header>
+
+          <div class="announcement-body">
+            <p>Hello Hackers,</p>
+
+            <p>
+              I am thrilled to start on this exciting journey about cybersecurity history and culture.
+              We will venture into the history of hacking and how everything we now know started,
+              learning more about the hackers who shaped the environment we live in, and have tons of
+              fun along the way. I hope you take away the essence of being a hacker.
+            </p>
+
+            <p>
+              This course will go through the good and the evil that gave cybersecurity its modern structure.
+              Ultimately, I hope to have motivated you enough to become a hacker and keep the culture alive.
+            </p>
+
+            <p>Happy Hacking and Learning!</p>
+          </div>
+        </article>
+
+        <!-- Future announcements -->
+
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-top">
+        © 2026 CSE 194 – Cybersecurity History and Culture
+      </div>
+      <div>
+        status=active | file=announcements.html
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
+

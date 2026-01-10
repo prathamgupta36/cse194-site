@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CSE 194 – Modules</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Modules for CSE 194: Cybersecurity History and Culture."
+  />
+  <style>
+    :root {
+      --bg-page: #000000;    
+      --bg-header: #202020;      
+      --bg-footer: #181818;
+      --text-main: #ffffff;
+      --text-muted: #cccccc;
+      --accent-green: #008000;
+      --border: #808080;
+      --link: #00d2ee;
+      --link-visited: #f6ea3f;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+    }
+
+    .page {
+      max-width: 1100px;      /* wider on big screens */
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 16px;        /* small gutter on left/right */
+      min-height: 100vh;      /* make the page at least full viewport height */
+      display: flex;
+      flex-direction: column; /* so header, main, footer stack nicely */
+    }
+
+    .site-header {
+      background-color: var(--bg-header);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .site-title {
+      font-family: "Courier New", Courier, monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    nav {
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    nav a {
+      color: var(--link);
+      margin-left: 6px;
+      margin-right: 6px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    nav a:visited {
+      color: var(--link-visited);
+    }
+
+    nav a.active {
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 20px 10px 24px;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      flex: 1;   
+    }
+
+    .eyebrow {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .file-label {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .accent {
+      color: greenyellow;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .modules-intro {
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin-bottom: 18px;
+    }
+
+    .modules-list {
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    /* Accordion / details styling */
+    details {
+      border: 1px solid var(--border);
+      background-color: #101010;
+      margin-bottom: 10px;
+      padding: 8px 10px;
+    }
+
+    details[open] {
+      background-color: #151515;
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .summary-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .module-code {
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .module-title {
+      font-size: 14px;
+    }
+
+    .module-week {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .summary-icon {
+      font-size: 16px;
+      margin-left: 8px;
+    }
+
+    .module-body {
+      margin-top: 10px;
+      border-top: 1px dotted var(--border);
+      padding-top: 10px;
+    }
+
+    .module-section-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .module-resources {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 8px;
+    }
+
+    .module-resources li {
+      margin-bottom: 6px;
+    }
+
+    .button-link {
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      background-color: #303030;
+      font-size: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      margin-right: 6px;
+    }
+
+    .button-link:hover {
+      background-color: #000000;
+    }
+
+    .note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 16px 0;
+    }
+
+    footer {
+      background-color: var(--bg-footer);
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      padding: 6px 10px 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    footer .footer-top {
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        max-width: 100%;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      main {
+        border-left: none;
+        border-right: none;
+      }
+
+      footer {
+        border-left: none;
+        border-right: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="site-title">cse194 course website</div>
+        <nav aria-label="Primary navigation">
+          <a href="index.html">Home</a> |
+          <!--
+            TODO update syllabus with the new office details
+          -->
+          <a href="assets/syllabus.pdf">Syllabus</a> |
+          <a href="#" class="active">Modules</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="eyebrow">CSE 194 · Cybersecurity History and Culture</div>
+      <div class="file-label">modules.html // version 0.1</div>
+
+      <h1>
+        Modules – <span class="accent">Cybersecurity History &amp; Culture</span>
+      </h1>
+
+      <p class="subtitle">
+        Browse weekly modules. Click a module to expand and view slides, assignments, and resources.
+      </p>
+
+      <p class="modules-intro">
+        As the course grows, each week's content will appear here as its own module. 
+        Use this page as a quick hub: expand a module to see slides and assignments without 
+        leaving the page.
+      </p>
+
+      <hr />
+
+      <section class="modules-list" aria-label="Course modules">
+        <!-- Module 0 -->
+        <details open>
+          <summary>
+            <div class="summary-left">
+              <span class="module-code">Module 0</span>
+              <span class="module-title">
+                Introduction to <span class="accent">Cybersecurity History &amp; Culture</span>
+              </span>
+              <span class="module-week">Week 1</span>
+            </div>
+            <span class="summary-icon" aria-hidden="true">▾</span>
+          </summary>
+
+          <div class="module-body">
+            <div style="margin-bottom: 10px; font-size: 13px; color: var(--text-muted);">
+              Start here. Module 0 orients you to the course, core ideas in cybersecurity history,
+              and the cultural context around security practices.
+            </div>
+
+            <!-- Slides -->
+            <div style="margin-bottom: 10px;">
+              <div class="module-section-title">Slides</div>
+              <ul class="module-resources">
+                <li>
+                  <a href="https://docs.google.com/presentation/d/1JPoRiahEXqnnGimvxqbsvGE8UbBO3TmK1pfuXkIOVKk/edit?usp=sharing" class="button-link">
+                    View Module 0 slides
+                  </a>
+                  <div class="note">
+                    Suggested: skim before class and refer back during discussion.
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Assignment -->
+            <div>
+              <div class="module-section-title">Assignment</div>
+              <ul class="module-resources">
+                <li>
+                  <a href="https://asu.instructure.com/courses/250192/assignments/7110621" class="button-link">
+                    Assignment 0
+                  </a>
+                  <div class="note">
+                    Due date: 28th January 2026. Submission via the Canvas.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <!-- Future modules placeholder -->
+        <!-- MODULE 1 -->
+        <details>
+          <summary>
+            <div class="summary-left">
+              <span class="module-code">Module 1</span>
+              <span class="module-title">
+                Phone Phreaking
+              </span>
+              <span class="module-status">Status: Coming soon</span>
+            </div>
+            <span class="summary-icon" aria-hidden="true">▾</span>
+          </summary>
+
+          <div class="module-body">
+            The culture and techniques of phone phreaking, from blue boxes to
+            late-era phreakers like Susan Thunder and the bridge into early hacking.
+            <div class="module-due">
+              Assignment due: <strong>Sunday, February 8, 2026</strong>
+            </div>
+            <div class="note">
+              Planned readings include &ldquo;Secrets of the Little Blue Box&rdquo;
+              and &ldquo;Searching for Susy Thunder&rdquo;. Content and prompts coming soon.
+            </div>
+          </div>
+        </details>
+
+        <!-- MODULE 2 -->
+        <details>
+          <summary>
+            <div class="summary-left">
+              <span class="module-code">Module 2</span>
+              <span class="module-title">
+                Early Hackers
+              </span>
+              <span class="module-status">Status: Coming soon</span>
+            </div>
+            <span class="summary-icon" aria-hidden="true">▾</span>
+          </summary>
+
+          <div class="module-body">
+            Early hacker culture: BBSes, IRC, Usenet, Kevin Mitnick, Tsutomu Shimomura,
+            Loyd Blankenship and &ldquo;The Hacker&rsquo;s Manifesto&rdquo;, and early policy moments.
+            <div class="module-due">
+              Assignment due: <strong>Sunday, February 22, 2026</strong>
+            </div>
+            <div class="note">
+              Planned readings include work on dial-up BBS culture, IRC history,
+              Usenet, and Reagan-era policy inspired by <em>WarGames</em>. Details to be added.
+            </div>
+          </div>
+        </details>
+
+        <!-- MODULE 3 -->
+        <details>
+          <summary>
+            <div class="summary-left">
+              <span class="module-code">Module 3</span>
+              <span class="module-title">
+                Hackers and Hacktivists
+              </span>
+              <span class="module-status">Status: Coming soon</span>
+            </div>
+            <span class="summary-icon" aria-hidden="true">▾</span>
+          </summary>
+
+          <div class="module-body">
+            From early worms to modern hacktivism: Robert Tappan Morris Jr.,
+            Dan Kaminsky, Aaron Swartz, and Phineas Fisher.
+            <div class="module-due">
+              Assignment due: <strong>Sunday, March 8, 2026</strong>
+            </div>
+            <div class="note">
+              Planned materials include reporting on the Morris worm, Kaminsky&rsquo;s DNS work,
+              coverage of Aaron Swartz, and interviews/writings from Phineas Fisher.
+            </div>
+          </div>
+        </details>
+
+        <!-- MODULE 4 -->
+        <details>
+          <summary>
+            <div class="summary-left">
+              <span class="module-code">Module 4</span>
+              <span class="module-title">
+                Hacking Collectives
+              </span>
+              <span class="module-status">Status: Coming soon</span>
+            </div>
+            <span class="summary-icon" aria-hidden="true">▾</span>
+          </summary>
+
+          <div class="module-body">
+            The rise of hacker groups and crews: Phrack, Legion of Doom, Masters of Deception,
+            the Great Hacker War, Cult of the Dead Cow, l0pht, Shellphish, and more.
+            <div class="module-due">
+              Assignment due: <strong>Sunday, March 22, 2026</strong>
+            </div>
+            <div class="note">
+              Planned readings span Phrack profiles, historical writeups on LOD/MoD,
+              Wired features, and talks/interviews on cDc and Shellphish.
+            </div>
+          </div>
+        </details>
+
+        <!-- MODULE 5 -->
+        <details>
+          <summary>
+            <div class="summary-left">
+              <span class="module-code">Module 5</span>
+              <span class="module-title">
+                The Hacker Aesthetic
+              </span>
+              <span class="module-status">Status: Coming soon</span>
+            </div>
+            <span class="summary-icon" aria-hidden="true">▾</span>
+          </summary>
+
+          <div class="module-body">
+            How hacking is represented in film, TV, and internet culture:
+            <em>Sneakers</em>, <em>Hackers</em>, <em>Mr. Robot</em>, and the language of &ldquo;pwning&rdquo;.
+            <div class="module-due">
+              Assignment due: <strong>Sunday, April 5, 2026</strong>
+            </div>
+            <div class="note">
+              Planned viewings include iconic hacker media plus readings on the origins
+              and spread of &ldquo;pwned&rdquo; and related slang.
+            </div>
+          </div>
+        </details>
+
+        <!-- MODULE 6 -->
+        <details>
+          <summary>
+            <div class="summary-left">
+              <span class="module-code">Module 6</span>
+              <span class="module-title">
+                Hacking the Planet
+              </span>
+              <span class="module-status">Status: Coming soon (TBD readings)</span>
+            </div>
+            <span class="summary-icon" aria-hidden="true">▾</span>
+          </summary>
+
+          <div class="module-body">
+            Big-picture, world-scale hacking themes. Specific readings and media for this module
+            are still to be determined.
+            <div class="module-due">
+              Assignment due: <strong>Sunday, April 19, 2026</strong>
+            </div>
+            <div class="note">
+              This module will be updated once the final reading list is confirmed in the syllabus.
+            </div>
+          </div>
+        </details>
+
+        <!-- MODULE 7 -->
+        <details>
+          <summary>
+            <div class="summary-left">
+              <span class="module-code">Module 7</span>
+              <span class="module-title">
+                The Dark Side
+              </span>
+              <span class="module-status">Status: Coming soon</span>
+            </div>
+            <span class="summary-icon" aria-hidden="true">▾</span>
+          </summary>
+
+          <div class="module-body">
+            The darker side of hacking and cybercrime: early viruses, Albert Gonzales,
+            Ross Ulbricht and Silk Road, and organized cybercrime.
+            <div class="module-due">
+              Assignment due: <strong>TBD (by Friday, May 1, 2026)</strong>
+            </div>
+            <div class="note">
+              Planned materials include podcast episodes, longform reporting on
+              Albert Gonzales and Ross Ulbricht, and related case studies. Exact due date
+              and any final project/exam details will follow the syllabus.
+            </div>
+          </div>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-top">
+        © 2025 CSE 194 – Cybersecurity History and Culture
+      </div>
+      <div>
+        status=active | file=modules.html
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
+

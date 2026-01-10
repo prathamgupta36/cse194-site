@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="CSE 194: Cybersecurity History and Culture course website. Currently under construction."
+    content="CSE 194: Cybersecurity History and Culture course website."
   />
   <style>
     :root {
@@ -17,8 +17,8 @@
       --text-muted: #cccccc;
       --accent-green: #008000;
       --border: #808080;
-      --link: #00d2ee;
-      --link-visited: #551a8b;
+      --link-visited: #00d2ee;
+      --link: #f6ea3f;
     }
 
     * {
@@ -27,16 +27,24 @@
       padding: 0;
     }
 
+    html,
     body {
+      height: 100%;
       font-family: Arial, Helvetica, sans-serif;
       background-color: var(--bg-page);
       color: var(--text-main);
     }
 
     .page {
-      max-width: 800px;
+      max-width: 1100px;      /* wider on big screens */
+      width: 100%;
       margin: 0 auto;
+      padding: 0 16px;        /* small gutter on left/right */
+      min-height: 100vh;      /* make the page at least full viewport height */
+      display: flex;
+      flex-direction: column; /* so header, main, footer stack nicely */
     }
+
 
     .site-header {
       background-color: var(--bg-header);
@@ -64,8 +72,29 @@
       white-space: nowrap;
     }
 
-    nav a {
+    /*nav a {
       color: var(--link);
+      margin-left: 6px;
+      margin-right: 6px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }*/
+
+    /* nav a:visited {
+      color: var(--link-visited);
+    } */
+
+    /*
+    nav a.active {
+      font-weight: bold;
+      text-decoration: none;
+    }*/
+    nav a,
+    nav a:visited {
+      color: var(--link); /* always blue in the nav */
       margin-left: 6px;
       margin-right: 6px;
       text-decoration: none;
@@ -75,19 +104,18 @@
       text-decoration: underline;
     }
 
-    /* nav a:visited {
-      color: var(--link-visited);
-    } */
-
+    /* highlight the current page instead */
     nav a.active {
       font-weight: bold;
       text-decoration: none;
+      color: var(--link-visited); /* yellow only for the active page */
     }
 
     main {
       padding: 20px 10px 24px;
       border-left: 1px solid var(--border);
       border-right: 1px solid var(--border);
+      flex: 1;   
     }
 
     .hero {
@@ -222,6 +250,49 @@
         border-right: none;
       }
     }
+
+        .syllabus-preview {
+      margin-top: 16px;
+      border: 1px solid var(--border);
+      background-color: #101010;
+      padding: 10px 12px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .syllabus-preview-header {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .syllabus-preview-title {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .syllabus-preview iframe {
+      width: 100%;
+      min-height: 500px;   /* adjust if you want it taller/shorter */
+      border: none;
+      margin-top: 8px;
+      background-color: #000000;
+    }
+
+    .syllabus-preview-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    @media (max-width: 600px) {
+      .syllabus-preview iframe {
+        min-height: 360px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -234,7 +305,8 @@
           <!--
             TODO update syllabus with the new office details
           -->
-          <a href="assets/syllabus.pdf">Syllabus</a>
+          <a href="assets/syllabus.pdf">Syllabus</a> |
+          <a href="modules.html">Modules</a>
         </nav>
       </div>
     </header>
@@ -242,11 +314,11 @@
     <main>
       <section class="hero">
         <div class="eyebrow">CSE 194 · Spring 2026 · Arizona State University</div>
-        <div class="file-label">index.html // version 0.1-beta</div>
+        <div class="file-label">index.html // version 0.2</div>
 
         <h1>
           CSE 194 Course Website –
-          <span class="accent">Under Construction</span>
+          <span class="accent">Active</span>
         </h1>
 
         <div class="subtitle">
@@ -254,20 +326,43 @@
         </div>
 
         <p style="font-size: 13px; line-height: 1.4; max-width: 620px;">
-          The full course site (modules, readings, assignments, and announcements) is not online yet.
-          While this page is under construction, you can still view the official course syllabus.
+          The full course site (modules, readings, assignments, and announcements) will be published as we move forward with the classes.
+        </p>
+
+        <p style="font-size: 13px; line-height: 1.4; max-width: 620px;">
+          Please read the syllabus below.
         </p>
 
         <div class="hero-note">
-          hint: use the "Syllabus" link in the navigation bar or the button below to open the course syllabus
-          while the rest of the site is being built.
+          hint: use the "Syllabus" link in the navigation bar or the button below to open the course syllabus and download it.
         </div>
 
         <div class="hero-actions">
           <a href="assets/syllabus.pdf" class="button-link">Open syllabus</a>
         </div>
 
+        <!-- Inline syllabus preview -->
+        <section class="syllabus-preview" aria-label="Syllabus preview">
+          <div class="syllabus-preview-header">Syllabus // preview</div>
+          <div class="syllabus-preview-title">
+            CSE 194 – Cybersecurity History and Culture
+          </div>
+
+          <!-- This shows the PDF directly on the page -->
+          <iframe
+            src="assets/syllabus.pdf#view=FitH"
+            title="CSE 194 Syllabus preview"
+            loading="lazy"
+          ></iframe>
+
+          <p class="syllabus-preview-note">
+            Tip: if the preview doesn’t load in your browser, use the “Open syllabus” button above
+            to view or download the full PDF.
+          </p>
+        </section>
+
         <div class="meta-grid" aria-label="Course details">
+
           <div>
             <div class="meta-item-label">Instructor</div>
             <div>Pratham Gupta</div>
@@ -284,14 +379,6 @@
       </section>
 
       <hr />
-
-      <section>
-        <p style="font-size: 12px; color: var(--text-muted);">
-          Note: This page is a placeholder for the CSE 194 course website. Once development is complete,
-          this URL will host links to readings, historical case studies, and other material related to
-          cybersecurity history and culture.
-        </p>
-      </section>
     </main>
 
     <footer>
@@ -299,7 +386,7 @@
         © 2025 CSE 194 – Cybersecurity History and Culture
       </div>
       <div>
-        status=UNDER_CONSTRUCTION | file=index.html
+        status=active | file=index.html
       </div>
     </footer>
   </div>

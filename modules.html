@@ -4,14 +4,12 @@
   <meta charset="UTF-8" />
   <title>CSE 194 – Modules</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Modules for CSE 194: Cybersecurity History and Culture."
-  />
+  <meta name="description" content="Modules for CSE 194: Cybersecurity History and Culture." />
+
   <style>
     :root {
-      --bg-page: #000000;    
-      --bg-header: #202020;      
+      --bg-page: #000000;
+      --bg-header: #202020;
       --bg-footer: #181818;
       --text-main: #ffffff;
       --text-muted: #cccccc;
@@ -21,14 +19,9 @@
       --link-visited: #f6ea3f;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html,
-    body {
+    html, body {
       height: 100%;
       font-family: Arial, Helvetica, sans-serif;
       background-color: var(--bg-page);
@@ -66,27 +59,21 @@
       white-space: nowrap;
     }
 
-    nav {
-      font-size: 13px;
-      white-space: nowrap;
-    }
+    nav { font-size: 13px; white-space: nowrap; }
 
-    nav a,
-    nav a:visited {
-      color: var(--link); /* blue */
+    nav a, nav a:visited {
+      color: var(--link);
       margin-left: 6px;
       margin-right: 6px;
       text-decoration: none;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+    nav a:hover { text-decoration: underline; }
 
     nav a.active {
       font-weight: bold;
       text-decoration: none;
-      color: var(--link-visited); /* yellow for current page */
+      color: var(--link-visited);
     }
 
     main {
@@ -114,14 +101,9 @@
       margin-bottom: 14px;
     }
 
-    h1 {
-      font-size: 24px;
-      margin-bottom: 6px;
-    }
+    h1 { font-size: 24px; margin-bottom: 6px; }
 
-    .accent {
-      color: greenyellow;
-    }
+    .accent { color: greenyellow; }
 
     .subtitle {
       font-size: 14px;
@@ -137,10 +119,7 @@
       margin-bottom: 18px;
     }
 
-    .modules-list {
-      margin-top: 10px;
-      font-size: 14px;
-    }
+    .modules-list { margin-top: 10px; font-size: 14px; }
 
     /* Accordion / details styling */
     details {
@@ -150,9 +129,7 @@
       padding: 8px 10px;
     }
 
-    details[open] {
-      background-color: #151515;
-    }
+    details[open] { background-color: #151515; }
 
     summary {
       list-style: none;
@@ -164,15 +141,9 @@
       align-items: center;
     }
 
-    summary::-webkit-details-marker {
-      display: none;
-    }
+    summary::-webkit-details-marker { display: none; }
 
-    .summary-left {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
+    .summary-left { display: flex; flex-direction: column; gap: 2px; }
 
     .module-code {
       text-transform: uppercase;
@@ -181,24 +152,13 @@
       color: var(--text-muted);
     }
 
-    .module-title {
-      font-size: 16px;
-    }
+    .module-title { font-size: 16px; }
 
-    .module-week {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
+    .module-week { font-size: 12px; color: var(--text-muted); }
 
-    .module-status {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
+    .module-status { font-size: 11px; color: var(--text-muted); }
 
-    .summary-icon {
-      font-size: 16px;
-      margin-left: 8px;
-    }
+    .summary-icon { font-size: 16px; margin-left: 8px; }
 
     .module-body {
       margin-top: 10px;
@@ -207,14 +167,6 @@
       font-size: 14px;
       line-height: 1.5;
       color: var(--text-muted);
-    }
-
-    .module-section-title {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      margin-bottom: 4px;
     }
 
     /* Week blocks inside a module */
@@ -237,13 +189,9 @@
       margin-bottom: 6px;
     }
 
-    .module-week-line {
-      margin-bottom: 6px;
-    }
+    .module-week-line { margin-bottom: 6px; }
 
-    .module-week-line strong {
-      margin-right: 6px;
-    }
+    .module-week-line strong { margin-right: 6px; }
 
     /* Highlight current week */
     .module-week-block.current-week {
@@ -251,24 +199,12 @@
       background-color: #181818;
     }
 
-    .module-week-block.current-week .module-week-label {
-      color: greenyellow;
-    }
+    .module-week-block.current-week .module-week-label { color: greenyellow; }
 
     .module-week-block.current-week .module-week-label::after {
       content: "  ← current week";
       font-size: 11px;
       color: var(--text-muted);
-    }
-
-    .module-resources {
-      list-style: none;
-      padding-left: 0;
-      margin-bottom: 8px;
-    }
-
-    .module-resources li {
-      margin-bottom: 6px;
     }
 
     .button-link {
@@ -282,9 +218,7 @@
       margin-right: 6px;
     }
 
-    .button-link:hover {
-      background-color: #000000;
-    }
+    .button-link:hover { background-color: #000000; }
 
     .button-disabled {
       display: inline-block;
@@ -298,11 +232,7 @@
       cursor: default;
     }
 
-    .note {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
+    .note { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 
     hr {
       border: none;
@@ -321,49 +251,86 @@
       font-family: "Courier New", Courier, monospace;
     }
 
-    footer .footer-top {
-      margin-bottom: 4px;
+    footer .footer-top { margin-bottom: 4px; }
+
+    /* ---------- NO CLASS (Week 4) styling ---------- */
+    .module-week-block.no-class {
+      position: relative;
+      overflow: hidden;   /* keep X inside this block */
+      border-color: #666;
+      background: #141414;
+    }
+
+    /* keep overlay behind content */
+    .module-week-block.no-class > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* centered red X */
+    .module-week-block.no-class::before,
+    .module-week-block.no-class::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 140%;
+      border-top: 3px solid rgba(255, 60, 60, 0.45);
+      transform-origin: center;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .module-week-block.no-class::before {
+      transform: translate(-50%, -50%) rotate(12deg);
+    }
+
+    .module-week-block.no-class::after {
+      transform: translate(-50%, -50%) rotate(-12deg);
+    }
+
+    .no-class-badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 8px;
+      margin-left: 8px;
+      border: 1px solid rgba(255, 60, 60, 0.55);
+      color: rgba(255, 120, 120, 0.95);
+      background: rgba(255, 60, 60, 0.08);
+      border-radius: 999px;
+      vertical-align: middle;
     }
 
     @media (max-width: 600px) {
-      .page {
-        max-width: 100%;
-      }
+      .page { max-width: 100%; }
 
       .header-inner {
         flex-direction: column;
         align-items: flex-start;
       }
 
-      main {
-        border-left: none;
-        border-right: none;
-      }
+      main { border-left: none; border-right: none; }
 
-      footer {
-        border-left: none;
-        border-right: none;
-      }
+      footer { border-left: none; border-right: none; }
     }
   </style>
 </head>
+
 <body>
   <div class="page">
     <header class="site-header">
       <div class="header-inner">
         <div class="site-title">cse194 course website</div>
-          <nav aria-label="Primary navigation">
-            <a href="index.html">Home</a> |
-            <a
-              href="https://docs.google.com/document/d/18Cp6GryysWdbio7tAbaY5gUJH0PKi9CWTm712038SrQ/edit"
-              target="_blank"
-              rel="noopener"
-            >
-              Syllabus
-            </a> |
-            <a href="#" class="active">Modules</a> |
-            <a href="announcements.html">Announcements</a>
-          </nav>
+        <nav aria-label="Primary navigation">
+          <a href="index.html">Home</a> |
+          <a
+            href="https://docs.google.com/document/d/18Cp6GryysWdbio7tAbaY5gUJH0PKi9CWTm712038SrQ/edit"
+            target="_blank"
+            rel="noopener"
+          >Syllabus</a> |
+          <a href="#" class="active">Modules</a> |
+          <a href="announcements.html">Announcements</a>
+        </nav>
       </div>
     </header>
 
@@ -371,9 +338,7 @@
       <div class="eyebrow">CSE 194 · Cybersecurity History and Culture</div>
       <div class="file-label">modules.html // version 0.3</div>
 
-      <h1>
-        Modules – <span class="accent">Cybersecurity History &amp; Culture</span>
-      </h1>
+      <h1>Modules – <span class="accent">Cybersecurity History & Culture</span></h1>
 
       <p class="subtitle">
         Each module spans <strong>two weeks</strong>. Every week has its own slides and a short homework
@@ -395,7 +360,7 @@
             <div class="summary-left">
               <span class="module-code">Module 0</span>
               <span class="module-title">
-                Introduction to <span class="accent">Cybersecurity History &amp; Culture</span>
+                Introduction to <span class="accent">Cybersecurity History & Culture</span>
               </span>
               <span class="module-week">Weeks 1–2 · January 14 & 21, 2026</span>
             </div>
@@ -463,9 +428,7 @@
           <summary>
             <div class="summary-left">
               <span class="module-code">Module 1</span>
-              <span class="module-title">
-                Phone Phreaking
-              </span>
+              <span class="module-title">Phone Phreaking</span>
               <span class="module-week">Weeks 3–4 · January 28 & February 4, 2026</span>
               <span class="module-status">Status: Coming soon</span>
             </div>
@@ -495,28 +458,31 @@
                 <a href="https://canvas.asu.edu/courses/250192/assignments/7176268?module_item_id=19030495" class="button-link">
                   Assignment 2
                 </a>
-                  Due: <strong>Tuesday, February 3rd, 2026</strong> (day before class). See Canvas for full prompt.
+                <div class="note">
+                  Due: <strong>Tuesday, February 3, 2026</strong> (day before class). See Canvas for full prompt.
                 </div>
+              </div>
             </div>
 
-            <!-- Week 4 -->
-            <div class="module-week-block" data-date="2026-02-04">
-              <div class="module-week-label">Week 4 · February 4, 2026 (Wednesday)</div>
+            <!-- Week 4 (No class) -->
+            <div class="module-week-block no-class" data-date="2026-02-04">
+              <div class="module-week-label">
+                Week 4 · February 4, 2026 (Wednesday)
+                <span class="no-class-badge">No class</span>
+              </div>
+
               <div class="module-week-meta">
-                Focus: Susan Thunder and the transition from phreakers to early hackers.
+                No class meeting this week.
               </div>
 
               <div class="module-week-line">
                 <strong>Slides:</strong>
-                <span class="button-disabled">Week 4 slides – coming soon</span>
+                <span class="button-disabled">No slides</span>
               </div>
 
               <div class="module-week-line">
                 <strong>Assignment:</strong>
-                <span class="button-disabled">Assignment 3 – coming soon</span>
-                <div class="note">
-                  Due: <strong>Tuesday, February 3, 2026</strong> (day before class). See Canvas for details.
-                </div>
+                <span class="button-disabled">No homework due</span>
               </div>
             </div>
           </div>
@@ -527,9 +493,7 @@
           <summary>
             <div class="summary-left">
               <span class="module-code">Module 2</span>
-              <span class="module-title">
-                Early Hackers
-              </span>
+              <span class="module-title">Early Hackers</span>
               <span class="module-week">Weeks 5–6 · February 11 & 18, 2026</span>
               <span class="module-status">Status: Coming soon</span>
             </div>
@@ -538,14 +502,12 @@
 
           <div class="module-body">
             Early hacker culture: BBSes, IRC, Usenet, Kevin Mitnick, Tsutomu Shimomura,
-            Loyd Blankenship and &ldquo;The Hacker&rsquo;s Manifesto&rdquo;, and early policy moments.
+            Loyd Blankenship and The Hackers Manifesto, and early policy moments.
 
             <!-- Week 5 -->
             <div class="module-week-block" data-date="2026-02-11">
               <div class="module-week-label">Week 5 · February 11, 2026 (Wednesday)</div>
-              <div class="module-week-meta">
-                Focus: Bulletin Board Systems and the early online underground.
-              </div>
+              <div class="module-week-meta">Focus: Bulletin Board Systems and the early online underground.</div>
 
               <div class="module-week-line">
                 <strong>Slides:</strong>
@@ -555,18 +517,14 @@
               <div class="module-week-line">
                 <strong>Assignment:</strong>
                 <span class="button-disabled">Assignment 4 – coming soon</span>
-                <div class="note">
-                  Due: <strong>Tuesday, February 10, 2026</strong> (day before class). See Canvas for full prompt.
-                </div>
+                <div class="note">Due: <strong>Tuesday, February 10, 2026</strong> (day before class).</div>
               </div>
             </div>
 
             <!-- Week 6 -->
             <div class="module-week-block" data-date="2026-02-18">
               <div class="module-week-label">Week 6 · February 18, 2026 (Wednesday)</div>
-              <div class="module-week-meta">
-                Focus: IRC, Usenet, and early hacking legends like Kevin Mitnick.
-              </div>
+              <div class="module-week-meta">Focus: IRC, Usenet, and early hacking legends like Kevin Mitnick.</div>
 
               <div class="module-week-line">
                 <strong>Slides:</strong>
@@ -576,9 +534,7 @@
               <div class="module-week-line">
                 <strong>Assignment:</strong>
                 <span class="button-disabled">Assignment 5 – coming soon</span>
-                <div class="note">
-                  Due: <strong>Tuesday, February 17, 2026</strong> (day before class). See Canvas for details.
-                </div>
+                <div class="note">Due: <strong>Tuesday, February 17, 2026</strong> (day before class).</div>
               </div>
             </div>
           </div>
@@ -589,10 +545,8 @@
           <summary>
             <div class="summary-left">
               <span class="module-code">Module 3</span>
-              <span class="module-title">
-                Hackers and Hacktivists
-              </span>
-              <span class="module-week">Weeks 7–8 · February 25 &amp; March 4, 2026</span>
+              <span class="module-title">Hackers and Hacktivists</span>
+              <span class="module-week">Weeks 7–8 · February 25 & March 4, 2026</span>
               <span class="module-status">Status: Coming soon</span>
             </div>
             <span class="summary-icon" aria-hidden="true">▾</span>
@@ -602,12 +556,9 @@
             From early worms to modern hacktivism: Robert Tappan Morris Jr.,
             Dan Kaminsky, Aaron Swartz, and Phineas Fisher.
 
-            <!-- Week 7 -->
             <div class="module-week-block" data-date="2026-02-25">
               <div class="module-week-label">Week 7 · February 25, 2026 (Wednesday)</div>
-              <div class="module-week-meta">
-                Focus: Early worms and the Morris worm as a turning point.
-              </div>
+              <div class="module-week-meta">Focus: Early worms and the Morris worm as a turning point.</div>
 
               <div class="module-week-line">
                 <strong>Slides:</strong>
@@ -617,18 +568,13 @@
               <div class="module-week-line">
                 <strong>Assignment:</strong>
                 <span class="button-disabled">Assignment 6 – coming soon</span>
-                <div class="note">
-                  Due: <strong>Tuesday, February 24, 2026</strong> (day before class). See Canvas for details.
-                </div>
+                <div class="note">Due: <strong>Tuesday, February 24, 2026</strong> (day before class).</div>
               </div>
             </div>
 
-            <!-- Week 8 -->
             <div class="module-week-block" data-date="2026-03-04">
               <div class="module-week-label">Week 8 · March 4, 2026 (Wednesday)</div>
-              <div class="module-week-meta">
-                Focus: Hacktivism, Aaron Swartz, and Phineas Fisher.
-              </div>
+              <div class="module-week-meta">Focus: Hacktivism, Aaron Swartz, and Phineas Fisher.</div>
 
               <div class="module-week-line">
                 <strong>Slides:</strong>
@@ -638,9 +584,7 @@
               <div class="module-week-line">
                 <strong>Assignment:</strong>
                 <span class="button-disabled">Assignment 7 – coming soon</span>
-                <div class="note">
-                  Due: <strong>Tuesday, March 3, 2026</strong> (day before class). See Canvas for details.
-                </div>
+                <div class="note">Due: <strong>Tuesday, March 3, 2026</strong> (day before class).</div>
               </div>
             </div>
           </div>
@@ -651,10 +595,8 @@
           <summary>
             <div class="summary-left">
               <span class="module-code">Module 4</span>
-              <span class="module-title">
-                Hacking Collectives
-              </span>
-              <span class="module-week">Weeks 9–10 · March 18 &amp; 25, 2026</span>
+              <span class="module-title">Hacking Collectives</span>
+              <span class="module-week">Weeks 9–10 · March 18 & 25, 2026</span>
               <span class="module-status">Status: Coming soon</span>
             </div>
             <span class="summary-icon" aria-hidden="true">▾</span>
@@ -664,45 +606,25 @@
             The rise of hacker groups and crews: Phrack, Legion of Doom, Masters of Deception,
             the Great Hacker War, Cult of the Dead Cow, l0pht, Shellphish, and more.
 
-            <!-- Week 9 -->
             <div class="module-week-block" data-date="2026-03-18">
               <div class="module-week-label">Week 9 · March 18, 2026 (Wednesday)</div>
-              <div class="module-week-meta">
-                Focus: Phrack, Legion of Doom, Masters of Deception, and the Great Hacker War.
-              </div>
+              <div class="module-week-meta">Focus: Phrack, Legion of Doom, Masters of Deception, and the Great Hacker War.</div>
 
+              <div class="module-week-line"><strong>Slides:</strong> <span class="button-disabled">Week 9 slides – coming soon</span></div>
               <div class="module-week-line">
-                <strong>Slides:</strong>
-                <span class="button-disabled">Week 9 slides – coming soon</span>
-              </div>
-
-              <div class="module-week-line">
-                <strong>Assignment:</strong>
-                <span class="button-disabled">Assignment 8 – coming soon</span>
-                <div class="note">
-                  Due: <strong>Tuesday, March 17, 2026</strong> (day before class). See Canvas for full prompt.
-                </div>
+                <strong>Assignment:</strong> <span class="button-disabled">Assignment 8 – coming soon</span>
+                <div class="note">Due: <strong>Tuesday, March 17, 2026</strong> (day before class).</div>
               </div>
             </div>
 
-            <!-- Week 10 -->
             <div class="module-week-block" data-date="2026-03-25">
               <div class="module-week-label">Week 10 · March 25, 2026 (Wednesday)</div>
-              <div class="module-week-meta">
-                Focus: Cult of the Dead Cow, l0pht, Shellphish, and modern security research crews.
-              </div>
+              <div class="module-week-meta">Focus: Cult of the Dead Cow, l0pht, Shellphish, and modern security research crews.</div>
 
+              <div class="module-week-line"><strong>Slides:</strong> <span class="button-disabled">Week 10 slides – coming soon</span></div>
               <div class="module-week-line">
-                <strong>Slides:</strong>
-                <span class="button-disabled">Week 10 slides – coming soon</span>
-              </div>
-
-              <div class="module-week-line">
-                <strong>Assignment:</strong>
-                <span class="button-disabled">Assignment 9 – coming soon</span>
-                <div class="note">
-                  Due: <strong>Tuesday, March 24, 2026</strong> (day before class). See Canvas for details.
-                </div>
+                <strong>Assignment:</strong> <span class="button-disabled">Assignment 9 – coming soon</span>
+                <div class="note">Due: <strong>Tuesday, March 24, 2026</strong> (day before class).</div>
               </div>
             </div>
           </div>
@@ -713,9 +635,7 @@
           <summary>
             <div class="summary-left">
               <span class="module-code">Module 5</span>
-              <span class="module-title">
-                The Hacker Aesthetic
-              </span>
+              <span class="module-title">The Hacker Aesthetic</span>
               <span class="module-week">Weeks 11–12 · April 1 & 8, 2026</span>
               <span class="module-status">Status: Coming soon</span>
             </div>
@@ -724,47 +644,27 @@
 
           <div class="module-body">
             How hacking is represented in film, TV, and internet culture:
-            <em>Sneakers</em>, <em>Hackers</em>, <em>Mr. Robot</em>, and the language of &ldquo;pwning&rdquo;.
+            <em>Sneakers</em>, <em>Hackers</em>, <em>Mr. Robot</em>, and the language of pwning.
 
-            <!-- Week 11 -->
             <div class="module-week-block" data-date="2026-04-01">
               <div class="module-week-label">Week 11 · April 1, 2026 (Wednesday)</div>
-              <div class="module-week-meta">
-                Focus: Film portrayals of hacking, including <em>Sneakers</em> and <em>Hackers</em>.
-              </div>
+              <div class="module-week-meta">Focus: Film portrayals of hacking, including <em>Sneakers</em> and <em>Hackers</em>.</div>
 
+              <div class="module-week-line"><strong>Slides:</strong> <span class="button-disabled">Week 11 slides – coming soon</span></div>
               <div class="module-week-line">
-                <strong>Slides:</strong>
-                <span class="button-disabled">Week 11 slides – coming soon</span>
-              </div>
-
-              <div class="module-week-line">
-                <strong>Assignment:</strong>
-                <span class="button-disabled">Assignment 10 – coming soon</span>
-                <div class="note">
-                  Due: <strong>Tuesday, March 31, 2026</strong> (day before class). See Canvas for full prompt.
-                </div>
+                <strong>Assignment:</strong> <span class="button-disabled">Assignment 10 – coming soon</span>
+                <div class="note">Due: <strong>Tuesday, March 31, 2026</strong> (day before class).</div>
               </div>
             </div>
 
-            <!-- Week 12 -->
             <div class="module-week-block" data-date="2026-04-08">
               <div class="module-week-label">Week 12 · April 8, 2026 (Wednesday)</div>
-              <div class="module-week-meta">
-                Focus: <em>Mr. Robot</em>, hacker aesthetics, and &ldquo;pwning&rdquo; culture online.
-              </div>
+              <div class="module-week-meta">Focus: <em>Mr. Robot</em>, hacker aesthetics, and pwning culture online.</div>
 
+              <div class="module-week-line"><strong>Slides:</strong> <span class="button-disabled">Week 12 slides – coming soon</span></div>
               <div class="module-week-line">
-                <strong>Slides:</strong>
-                <span class="button-disabled">Week 12 slides – coming soon</span>
-              </div>
-
-              <div class="module-week-line">
-                <strong>Assignment:</strong>
-                <span class="button-disabled">Assignment 11 – coming soon</span>
-                <div class="note">
-                  Due: <strong>Tuesday, April 7, 2026</strong> (day before class). See Canvas for details.
-                </div>
+                <strong>Assignment:</strong> <span class="button-disabled">Assignment 11 – coming soon</span>
+                <div class="note">Due: <strong>Tuesday, April 7, 2026</strong> (day before class).</div>
               </div>
             </div>
           </div>
@@ -775,71 +675,46 @@
           <summary>
             <div class="summary-left">
               <span class="module-code">Module 6</span>
-              <span class="module-title">
-                Hacking the Planet
-              </span>
-              <span class="module-week">Weeks 13–14 · April 15 &amp; 22, 2026</span>
+              <span class="module-title">Hacking the Planet</span>
+              <span class="module-week">Weeks 13–14 · April 15 & 22, 2026</span>
               <span class="module-status">Status: Coming soon (TBD readings)</span>
             </div>
             <span class="summary-icon" aria-hidden="true">▾</span>
           </summary>
 
           <div class="module-body">
-            Big-picture, world-scale hacking themes. Specific readings and media for this module
-            are still to be determined.
+            Big-picture, world-scale hacking themes. Specific readings and media for this module are still to be determined.
 
-            <!-- Week 13 -->
             <div class="module-week-block" data-date="2026-04-15">
               <div class="module-week-label">Week 13 · April 15, 2026 (Wednesday)</div>
-              <div class="module-week-meta">
-                Focus: Global-scale hacking, infrastructure, and large campaigns.
-              </div>
+              <div class="module-week-meta">Focus: Global-scale hacking, infrastructure, and large campaigns.</div>
 
+              <div class="module-week-line"><strong>Slides:</strong> <span class="button-disabled">Week 13 slides – coming soon</span></div>
               <div class="module-week-line">
-                <strong>Slides:</strong>
-                <span class="button-disabled">Week 13 slides – coming soon</span>
-              </div>
-
-              <div class="module-week-line">
-                <strong>Assignment:</strong>
-                <span class="button-disabled">Assignment 12 – coming soon</span>
-                <div class="note">
-                  Due: <strong>Tuesday, April 14, 2026</strong> (day before class). See Canvas for details.
-                </div>
+                <strong>Assignment:</strong> <span class="button-disabled">Assignment 12 – coming soon</span>
+                <div class="note">Due: <strong>Tuesday, April 14, 2026</strong> (day before class).</div>
               </div>
             </div>
 
-            <!-- Week 14 -->
             <div class="module-week-block" data-date="2026-04-22">
               <div class="module-week-label">Week 14 · April 22, 2026 (Wednesday)</div>
-              <div class="module-week-meta">
-                Focus: Future threats, systemic risk, and &ldquo;hacking the planet&rdquo; as a metaphor.
-              </div>
+              <div class="module-week-meta">Focus: Future threats, systemic risk, and hacking the planet as a metaphor.</div>
 
+              <div class="module-week-line"><strong>Slides:</strong> <span class="button-disabled">Week 14 slides – coming soon</span></div>
               <div class="module-week-line">
-                <strong>Slides:</strong>
-                <span class="button-disabled">Week 14 slides – coming soon</span>
-              </div>
-
-              <div class="module-week-line">
-                <strong>Assignment:</strong>
-                <span class="button-disabled">Assignment 13 – coming soon</span>
-                <div class="note">
-                  Due: <strong>Tuesday, April 21, 2026</strong> (day before class). See Canvas for details.
-                </div>
+                <strong>Assignment:</strong> <span class="button-disabled">Assignment 13 – coming soon</span>
+                <div class="note">Due: <strong>Tuesday, April 21, 2026</strong> (day before class).</div>
               </div>
             </div>
           </div>
         </details>
 
-        <!-- Module 7: Week 15 (+ finals) -->
+        <!-- Module 7: Week 15 -->
         <details>
           <summary>
             <div class="summary-left">
               <span class="module-code">Module 7</span>
-              <span class="module-title">
-                The Dark Side
-              </span>
+              <span class="module-title">The Dark Side</span>
               <span class="module-week">Week 15 · April 29, 2026</span>
               <span class="module-status">Status: Coming soon</span>
             </div>
@@ -850,73 +725,33 @@
             The darker side of hacking and cybercrime: early viruses, Albert Gonzales,
             Ross Ulbricht and Silk Road, and organized cybercrime.
 
-            <!-- Week 15 -->
             <div class="module-week-block" data-date="2026-04-29">
               <div class="module-week-label">Week 15 · April 29, 2026 (Wednesday)</div>
-              <div class="module-week-meta">
-                Focus: Large-scale cybercrime, underground markets, and high-profile prosecutions.
-              </div>
+              <div class="module-week-meta">Focus: Large-scale cybercrime, underground markets, and high-profile prosecutions.</div>
 
+              <div class="module-week-line"><strong>Slides:</strong> <span class="button-disabled">Week 15 slides – coming soon</span></div>
               <div class="module-week-line">
-                <strong>Slides:</strong>
-                <span class="button-disabled">Week 15 slides – coming soon</span>
-              </div>
-
-              <div class="module-week-line">
-                <strong>Assignment:</strong>
-                <span class="button-disabled">Assignment 14 – coming soon</span>
-                <div class="note">
-                  Due: <strong>Tuesday, April 28, 2026</strong> (day before class). See Canvas for final-week details.
-                </div>
+                <strong>Assignment:</strong> <span class="button-disabled">Assignment 14 – coming soon</span>
+                <div class="note">Due: <strong>Tuesday, April 28, 2026</strong> (day before class).</div>
               </div>
             </div>
-
-            <!-- wrap-up slot (optional, commented out) -->
-            <!--
-            <div class="module-week-block" data-date="2026-05-01">
-              <div class="module-week-label">Wrap-Up · Date TBA</div>
-              <div class="module-week-meta">
-                This slot is reserved for any final project presentations, reflections, or exam activities,
-                scheduled according to the official finals calendar.
-              </div>
-
-              <div class="module-week-line">
-                <strong>Slides / Materials:</strong>
-                <span class="button-disabled">Last Week materials – coming soon</span>
-              </div>
-
-              <div class="module-week-line">
-                <strong>Final work:</strong>
-                <span class="button-disabled">Final deliverable – coming soon</span>
-                <div class="note">
-                  Last day of classes is <strong>Friday, May 1, 2026</strong>. Any final deadlines will follow the
-                  official schedule and will be posted on Canvas and here.
-                </div>
-              </div>
-            </div>
-            -->
           </div>
         </details>
       </section>
     </main>
 
     <footer>
-      <div class="footer-top">
-        © 2026 CSE 194 – Cybersecurity History and Culture
-      </div>
-      <div>
-        status=active | file=modules.html
-      </div>
+      <div class="footer-top">© 2026 CSE 194 – Cybersecurity History and Culture</div>
+      <div>status=active | file=modules.html</div>
     </footer>
   </div>
 
   <script>
     (function () {
-      // Compute Monday of the given date's week
       function startOfWeek(d) {
         var date = new Date(d.getFullYear(), d.getMonth(), d.getDate());
-        var day = date.getDay(); // 0 = Sun, 1 = Mon, ... 6 = Sat
-        var diff = (day === 0 ? -6 : 1 - day); // shift so Monday is start
+        var day = date.getDay();
+        var diff = (day === 0 ? -6 : 1 - day);
         date.setDate(date.getDate() + diff);
         date.setHours(0, 0, 0, 0);
         return date;
@@ -939,7 +774,6 @@
         var dateStr = block.getAttribute("data-date");
         if (!dateStr) return;
 
-        // Force midday to avoid timezone edge cases
         var classDate = new Date(dateStr + "T12:00:00");
         if (isNaN(classDate)) return;
 
@@ -947,13 +781,11 @@
         var diff = weekStart - todayWeekStart;
 
         if (diff >= 0) {
-          // this week or future week → pick the soonest
           if (diff < bestFutureDiff) {
             bestFutureDiff = diff;
             bestFuture = block;
           }
         } else {
-          // past weeks → track the most recent
           if (!lastPastWeekStart || weekStart > lastPastWeekStart) {
             lastPastWeekStart = weekStart;
             lastPast = block;
@@ -962,9 +794,7 @@
       });
 
       var current = bestFuture || lastPast;
-      if (current) {
-        current.classList.add("current-week");
-      }
+      if (current) current.classList.add("current-week");
     })();
   </script>
 </body>

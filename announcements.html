@@ -20,20 +20,6 @@
       --link: #00d2ee;
       --link-visited: #f6ea3f;
     }
-    a,
-    a:link {
-      color: var(--link);
-      text-decoration: none;
-    }
-
-    a:visited {
-      color: var(--link-visited);
-    }
-
-    a:hover,
-    a:focus {
-      text-decoration: underline;
-    }
 
     * {
       box-sizing: border-box;
@@ -50,6 +36,22 @@
       font-family: Arial, Helvetica, sans-serif;
       background-color: var(--bg-page);
       color: var(--text-main);
+    }
+
+    /* Global link styles */
+    a,
+    a:link {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: var(--link-visited);
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: underline;
     }
 
     .page {
@@ -267,7 +269,7 @@
 
     <main>
       <div class="eyebrow">CSE 194 · Cybersecurity History and Culture</div>
-      <div class="file-label">announcements.html // version 0.1</div>
+      <div class="file-label">announcements.html // version 0.2</div>
 
       <h1>
         Announcements – <span class="accent">Hello Hackers</span>
@@ -294,7 +296,6 @@
               Welcome to CSE 194: Cybersecurity History and Culture
             </h2>
             <div class="announcement-meta">
-              <!-- You can fill in an actual date if you like -->
               ANNOUNCEMENT · WELCOME · 14th January 2026
             </div>
           </header>
@@ -342,7 +343,7 @@
               <a href="https://www.cactuscon.com/student" target="_blank" rel="noopener">
                 https://www.cactuscon.com/student
               </a>.
-              Please register before the deadline to get the free tickets, which end at 10pm on
+              Please register before the deadline to get the free tickets, which end at 10&nbsp;pm on
               Thursday, February 5th.
             </p>
 
@@ -363,6 +364,57 @@
           </div>
         </article>
 
+        <!-- Announcement 3: Discord and News -->
+        <article class="announcement-card">
+          <header class="announcement-header">
+            <h2 class="announcement-title">
+              Discord and News
+            </h2>
+            <div class="announcement-meta">
+              ANNOUNCEMENT · COMMUNICATION · 28th January 2026
+            </div>
+          </header>
+
+          <div class="announcement-body">
+            <p>Hey Everyone,</p>
+
+            <p>
+              As we discussed at the end of the class, having a Discord for communication would be nice.
+              Please join the pwn.college Discord server and let me know your Discord IDs by either emailing me
+              (<a href="mailto:prathamgupta@asu.edu">prathamgupta@asu.edu</a>) or joining the server and
+              DMing me <code>@Alchemy1729</code> to get access to our class-specific channels.
+            </p>
+
+            <p>
+              Discord Server Link:
+              <a href="https://discord.gg/pwncollege" target="_blank" rel="noopener">
+                https://discord.gg/pwncollege
+              </a>
+            </p>
+
+            <p>
+              I also mentioned the vulnerability in WhatsApp and Signal. If anyone wants to read more,
+              here are the links:
+            </p>
+
+            <p>
+              GitHub:
+              <a href="https://github.com/gommzystudio/device-activity-tracker" target="_blank" rel="noopener">
+                https://github.com/gommzystudio/device-activity-tracker
+              </a>
+              <br />
+              Paper:
+              <a href="https://arxiv.org/pdf/2411.11194" target="_blank" rel="noopener">
+                https://arxiv.org/pdf/2411.11194
+              </a>
+            </p>
+
+            <p>
+              See you all at CactusCon. Again, there is no class next week, and we are going to CactusCon instead.
+            </p>
+          </div>
+        </article>
+
         <!-- Future announcements -->
 
       </section>
@@ -379,4 +431,3 @@
   </div>
 </body>
 </html>
-

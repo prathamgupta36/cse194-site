@@ -10,8 +10,8 @@
   />
   <style>
     :root {
-      --bg-page: #000000;    
-      --bg-header: #202020;      
+      --bg-page: #000000;
+      --bg-header: #202020;
       --bg-footer: #181818;
       --text-main: #ffffff;
       --text-muted: #cccccc;
@@ -21,16 +21,9 @@
       --link-visited: #f6ea3f;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html,
-    body {
-      height: 100%;
-    }
+    html, body { height: 100%; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -38,21 +31,9 @@
       color: var(--text-main);
     }
 
-    /* Global link styles */
-    a,
-    a:link {
-      color: var(--link);
-      text-decoration: none;
-    }
-
-    a:visited {
-      color: var(--link-visited);
-    }
-
-    a:hover,
-    a:focus {
-      text-decoration: underline;
-    }
+    a, a:link { color: var(--link); text-decoration: none; }
+    a:visited { color: var(--link-visited); }
+    a:hover, a:focus { text-decoration: underline; }
 
     .page {
       max-width: 1100px;
@@ -85,22 +66,16 @@
       white-space: nowrap;
     }
 
-    nav {
-      font-size: 13px;
-      white-space: nowrap;
-    }
+    nav { font-size: 13px; white-space: nowrap; }
 
-    nav a,
-    nav a:visited {
+    nav a, nav a:visited {
       color: var(--link);
       margin-left: 6px;
       margin-right: 6px;
       text-decoration: none;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+    nav a:hover { text-decoration: underline; }
 
     nav a.active {
       font-weight: bold;
@@ -133,14 +108,9 @@
       margin-bottom: 14px;
     }
 
-    h1 {
-      font-size: 22px;
-      margin-bottom: 6px;
-    }
+    h1 { font-size: 22px; margin-bottom: 6px; }
 
-    .accent {
-      color: greenyellow;
-    }
+    .accent { color: greenyellow; }
 
     .subtitle {
       font-size: 13px;
@@ -156,29 +126,38 @@
       margin-bottom: 18px;
     }
 
-    .announcement-list {
-      margin-top: 10px;
-      font-size: 13px;
-    }
+    .announcement-list { margin-top: 10px; font-size: 13px; }
 
-    .announcement-card {
+    /* Accordion / details styling (match modules vibe) */
+    details.announcement-card {
       border: 1px solid var(--border);
       background-color: #101010;
-      padding: 12px 12px 14px;
       margin-bottom: 12px;
+      padding: 12px 12px 14px;
     }
 
-    .announcement-header {
+    details.announcement-card[open] { background-color: #151515; }
+
+    summary.announcement-header {
+      list-style: none;
+      cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      gap: 8px;
-      margin-bottom: 8px;
+      gap: 10px;
+      margin-bottom: 0;
     }
 
-    .announcement-title {
-      font-size: 15px;
+    summary.announcement-header::-webkit-details-marker { display: none; }
+
+    .summary-left {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
     }
+
+    .announcement-title { font-size: 15px; margin: 0; }
 
     .announcement-meta {
       font-family: "Courier New", Courier, monospace;
@@ -189,14 +168,21 @@
       white-space: nowrap;
     }
 
-    .announcement-body p {
-      margin-bottom: 8px;
-      line-height: 1.5;
+    .summary-icon {
+      font-size: 16px;
+      margin-left: 8px;
+      color: var(--text-muted);
+      flex: 0 0 auto;
     }
 
-    .announcement-body p:last-child {
-      margin-bottom: 0;
+    .announcement-body {
+      margin-top: 10px;
+      border-top: 1px dotted var(--border);
+      padding-top: 10px;
     }
+
+    .announcement-body p { margin-bottom: 8px; line-height: 1.5; }
+    .announcement-body p:last-child { margin-bottom: 0; }
 
     hr {
       border: none;
@@ -215,35 +201,20 @@
       font-family: "Courier New", Courier, monospace;
     }
 
-    footer .footer-top {
-      margin-bottom: 4px;
-    }
+    footer .footer-top { margin-bottom: 4px; }
 
     @media (max-width: 600px) {
-      .page {
-        max-width: 100%;
-        padding: 0 8px;
-      }
+      .page { max-width: 100%; padding: 0 8px; }
 
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .header-inner { flex-direction: column; align-items: flex-start; }
 
-      main {
-        border-left: none;
-        border-right: none;
-      }
+      main { border-left: none; border-right: none; }
 
-      footer {
-        border-left: none;
-        border-right: none;
-      }
+      footer { border-left: none; border-right: none; }
 
-      .announcement-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      summary.announcement-header { flex-direction: column; align-items: flex-start; }
+
+      .announcement-meta { white-space: normal; }
     }
   </style>
 </head>
@@ -269,11 +240,9 @@
 
     <main>
       <div class="eyebrow">CSE 194 · Cybersecurity History and Culture</div>
-      <div class="file-label">announcements.html // version 0.2</div>
+      <div class="file-label">announcements.html // version 0.3</div>
 
-      <h1>
-        Announcements – <span class="accent">Hello Hackers</span>
-      </h1>
+      <h1>Announcements – <span class="accent">Hello Hackers</span></h1>
 
       <p class="subtitle">
         Course-wide updates, welcomes, and reminders will appear here throughout the term.
@@ -289,16 +258,17 @@
 
       <section class="announcement-list" aria-label="Course announcements">
 
-        <!-- Announcement 1: Welcome -->
-        <article class="announcement-card">
-          <header class="announcement-header">
-            <h2 class="announcement-title">
-              Welcome to CSE 194: Cybersecurity History and Culture
-            </h2>
-            <div class="announcement-meta">
-              ANNOUNCEMENT · WELCOME · 14th January 2026
+        <!-- Oldest -> Newest (newest is last and open) -->
+
+        <!-- Announcement 1: Welcome (Oldest) -->
+        <details class="announcement-card">
+          <summary class="announcement-header">
+            <div class="summary-left">
+              <h2 class="announcement-title">Welcome to CSE 194: Cybersecurity History and Culture</h2>
+              <div class="announcement-meta">ANNOUNCEMENT · WELCOME · 14th January 2026</div>
             </div>
-          </header>
+            <span class="summary-icon" aria-hidden="true">▾</span>
+          </summary>
 
           <div class="announcement-body">
             <p>Hello Hackers,</p>
@@ -317,18 +287,17 @@
 
             <p>Happy Learning and Hacking!</p>
           </div>
-        </article>
+        </details>
 
         <!-- Announcement 2: CactusCon + No Class -->
-        <article class="announcement-card">
-          <header class="announcement-header">
-            <h2 class="announcement-title">
-              CactusCon Registration And No Class on 4th February
-            </h2>
-            <div class="announcement-meta">
-              ANNOUNCEMENT · SCHEDULE · 19th January 2026
+        <details class="announcement-card">
+          <summary class="announcement-header">
+            <div class="summary-left">
+              <h2 class="announcement-title">CactusCon Registration And No Class on 4th February</h2>
+              <div class="announcement-meta">ANNOUNCEMENT · SCHEDULE · 19th January 2026</div>
             </div>
-          </header>
+            <span class="summary-icon" aria-hidden="true">▾</span>
+          </summary>
 
           <div class="announcement-body">
             <p>Hey Everyone,</p>
@@ -362,18 +331,17 @@
 
             <p>See you all on Wednesday when we learn about lockpicking.</p>
           </div>
-        </article>
+        </details>
 
         <!-- Announcement 3: Discord and News -->
-        <article class="announcement-card">
-          <header class="announcement-header">
-            <h2 class="announcement-title">
-              Discord and News
-            </h2>
-            <div class="announcement-meta">
-              ANNOUNCEMENT · COMMUNICATION · 28th January 2026
+        <details class="announcement-card">
+          <summary class="announcement-header">
+            <div class="summary-left">
+              <h2 class="announcement-title">Discord and News</h2>
+              <div class="announcement-meta">ANNOUNCEMENT · COMMUNICATION · 28th January 2026</div>
             </div>
-          </header>
+            <span class="summary-icon" aria-hidden="true">▾</span>
+          </summary>
 
           <div class="announcement-body">
             <p>Hey Everyone,</p>
@@ -413,7 +381,56 @@
               See you all at CactusCon. Again, there is no class next week, and we are going to CactusCon instead.
             </p>
           </div>
-        </article>
+        </details>
+
+        <!-- Announcement 4: CactusCon + Assignment Info (Newest - OPEN) -->
+        <details class="announcement-card" open>
+          <summary class="announcement-header">
+            <div class="summary-left">
+              <h2 class="announcement-title">CactusCon &amp; Assignment Information</h2>
+              <div class="announcement-meta">ANNOUNCEMENT · FIELD TRIP · 5th February 2026</div>
+            </div>
+            <span class="summary-icon" aria-hidden="true">▾</span>
+          </summary>
+
+          <div class="announcement-body">
+            <p>Hey Everyone,</p>
+
+            <p>
+              As CactusCon starts tomorrow, I wanted to give more information about it.
+              I will be there tomorrow and Saturday from <strong>9 AM to 5 PM</strong>.
+              To get the attendance, you just have to <strong>check in with me</strong>.
+            </p>
+
+            <p>
+              The best way to communicate would be through Discord. If anyone has not joined the Discord server
+              and gotten access to our class specific channel (by sending me a DM on Discord), please do so
+              before the con.
+            </p>
+
+            <p>
+              Discord Server Link:
+              <a href="https://discord.gg/pwncollege" target="_blank" rel="noopener">
+                https://discord.gg/pwncollege
+              </a>
+            </p>
+
+            <p>
+              Also, if you have not registered for the student tickets, the deadline is
+              <strong>10 PM today</strong>. The next assignment would be based on your visit to CactusCon,
+              so make sure you read the instructions before going to the con.
+            </p>
+
+            <p>
+              CactusCon Registration:
+              <a href="https://www.cactuscon.com/student" target="_blank" rel="noopener">
+                https://www.cactuscon.com/student
+              </a>
+            </p>
+
+            <p>See you all tomorrow!</p>
+          </div>
+        </details>
 
         <!-- Future announcements -->
 
@@ -421,12 +438,8 @@
     </main>
 
     <footer>
-      <div class="footer-top">
-        © 2026 CSE 194 – Cybersecurity History and Culture
-      </div>
-      <div>
-        status=active | file=announcements.html
-      </div>
+      <div class="footer-top">© 2026 CSE 194 – Cybersecurity History and Culture</div>
+      <div>status=active | file=announcements.html</div>
     </footer>
   </div>
 </body>
